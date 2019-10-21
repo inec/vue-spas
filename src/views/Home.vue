@@ -1,5 +1,5 @@
 <template>
-<div class="mt-3">
+  <div class="mt-3">
     <div class="text-secondary text-center">
       Welcome back
       <span class="font-weight-bold text-info">{{user}}</span>
@@ -30,25 +30,8 @@
 </template>
 
 <script>
-// @ is an alias to /src
-//import Navigation from "@/components/Navigation.vue";
-
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import db from "../db.js";
 export default {
   name: "home",
-  data: function() {
-    return {
-      user: null
-    };
-  },
-  mounted() {
-    db.collection("users")
-     .doc("Y4lwkEPoCB310wX6Fe1c")// .doc("YIYwaFvSdQ4Jiv5YV0cl")
-      .get()
-      .then(snapshot => {
-        this.user = snapshot.data().name;
-      });
-  }
+  props: ["user"]
 };
 </script>
