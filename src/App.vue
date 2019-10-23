@@ -18,12 +18,19 @@ export default {
     };
   },
   mounted() {
-    db.collection("users")
+    Firebase.auth().onAuthStateChanged(user =>{
+      if (user){
+        this.user=user.email;
+      }
+    }
+    );
+
+    /*db.collection("users")
        .doc("Y4lwkEPoCB310wX6Fe1c")// .doc("YIYwaFvSdQ4Jiv5YV0cl")
       .get()
       .then(snapshot => {
         this.user = snapshot.data().name;
-      });
+      });*/
   },
   components: {
     Navigation
